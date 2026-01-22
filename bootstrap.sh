@@ -4,10 +4,10 @@ set -xeu
 apt-get update -y
 
 sudo apt install -y nodejs npm
-mkdir practica-cluster
+mkdir -p practica-cluster
 
 cd /home/vagrant/practica-cluster
-npm init
+npm init -y
 npm install express
 
 cp /vagrant/app.js /home/vagrant/practica-cluster/app.js

@@ -8,7 +8,8 @@ mkdir -p practica-cluster
 
 cd /home/vagrant/practica-cluster
 npm init -y
-npm install express
+npm install express 
+npm install -g loadtest
 
 cp /vagrant/app.js /home/vagrant/practica-cluster/app.js
 

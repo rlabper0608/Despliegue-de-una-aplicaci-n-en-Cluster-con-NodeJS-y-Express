@@ -55,3 +55,14 @@ Por tanto, como es algo obvio, el rendimiento aumentará con más nucleos.
 ## 3. Métricas de rendimiento
 
 Vamos a instalar un programa llamado `loadtest` para realizar las pruebas de rendimiento, ya que este nos permite realizar simular una gran cantidad de conexiones.
+Para la instalación, vamos a usar el comando `npm install -g loadtest`.
+
+Ahora abrimos una nueva terminal y lanzamos la prueba: 
+![Vagrantfile](img/loadtest.png);
+
+Ahora vamos a ir lanzando diferentes pruebas, para ver como se comportan los resultados.
+La siguiente prueba es sin clúster.
+Para esto tenemos que poner el primer codigo para `app.js` que hemos utilizado, y luego volver a lanzar la maquína para después hacer la prueba correspondiente.
+![Vagrantfile](img/loadtest-1.png);
+
+Como podemos ver, la respuesta es mas lenta, ya que al quitarle los clústers, el tiempo de respuesta aumenta.

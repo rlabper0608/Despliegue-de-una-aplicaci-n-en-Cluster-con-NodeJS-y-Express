@@ -66,3 +66,40 @@ Para esto tenemos que poner el primer codigo para `app.js` que hemos utilizado, 
 ![Vagrantfile](img/loadtest-1.png);
 
 Como podemos ver, la respuesta es mas lenta, ya que al quitarle los clústers, el tiempo de respuesta aumenta.
+
+La conclusión que sacamos es que los clusters son muy útiles para manejar una mayor cantidad de peticiones por segunda y con una menor latencia.
+
+## 4. Uso de PM2 para administrar un clúster de Node.js
+
+Para esta parte necesitamos instalar `pm2`, este nos facilita la parada, eliminación de procesos, y no solo eso, disponemos de algunas herramientas de monitorización.
+
+Vamos usar el comando de instalación: `npm install -g pm2`.
+
+Y como indica la actividad vamos a usar la versión que no está clusterizada.
+
+Vamos a añadir a bootstrap.sh el comando de `pm2 start app.js -i 0`, con el -i le vamos a indicar a la aplicación que se inicie en cluster_mode. Y cone el 0 le decimos que genere automáticamente tantos workers como nucleos tengamos.
+
+Una vez lanzamos vamos a ver por terminal lo siguiente:
+![Vagrantfile](img/pm2.png);
+
+Cuando ya no queramos tener la aplicación encendida, simplemtente ejecutamosa el comando `pm2 stop app.js` esto va a hacer que la aplicación se detenga y muestre por la terminar todos los procesos con un estado de `stopped`.
+![Vagrantfile](img/pm2-stop.png);
+
+Vamos a volver a lanzar el comando `pm2 start app.js -i 0` y luego el `pm2 ecosystem` para de esta forma crear el archivo Ecosystem. Este archivo se llama ecosystem.config.js y para el caso de nuestra aplicación lo tenemos que modificar con el contenido propuesto en el pdf.
+![Vagrantfile](img/pm2-ecosystem-comando.png);
+
+Para modificar el archivo tenemosq que hacer un `sudo nano ecosystem.config.js` y luego modificar el contenido de la siguiente manera:
+![Vagrantfile](img/pm2-ecosystem.png);
+
+Y luego lanzar el comando `pm2 start ecosystem.config.js` para que se lance la aplicación.
+Aquí podemos ver el estado de la aplicación y ver como efectivamente se está ejecutando en modo cluster.
+
+Vamos a ver los resultados de los comandos propuestos en el pdf.
+1. pm2 ls
+![Vagrantfile](img/pm2-ls.png);
+
+2. pm2 logs
+![Vagrantfile](img/pm2-logs.png);
+
+3. pm2 monit
+![Vagrantfile](img/pm2-monit.png);

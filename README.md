@@ -25,3 +25,15 @@ Como vemos tiene una respueta muy rápida
 
 Prueba 2 con valor de n = 5000000000:
 ![Vagrantfile](img/prueba-2.png);
+En este segundo caso, como vemos, el tiempo de respuesta es bastante más grande, llegando a tardar hasta 16 segundos.
+
+### 2.2 ¡Ahora con más clúster!
+Lo primero que tenemos que hacer ahora es modificar el archivo de `app.js`, siendo de nuevo el dado en la práctica.
+![Vagrantfile](img/app-js-2.png);
+
+Vamos a ver como afecta esto a los mismos dos casos que hemos realizado anteriormente, pero antes tenemos que realizar un `vagrant reload` para que los cambios se apliquen.
+
+Después de unos cuantos errores, he visto que tengo que cambiar una línea para que funcione, y es la siguiente;
+![Vagrantfile](img/app-js-cambio.png);
+
+Y además añadir `config.vm.network "forwarded_port", guest: 3000, host: 3000` al archivo `Vagrantfile` para que nos permita acceder a la aplicación desde el host.

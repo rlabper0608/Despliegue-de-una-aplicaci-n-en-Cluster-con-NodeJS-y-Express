@@ -92,7 +92,7 @@ Para modificar el archivo tenemosq que hacer un `sudo nano ecosystem.config.js` 
 ![Vagrantfile](img/pm2-ecosystem.png);
 
 Y luego lanzar el comando `pm2 start ecosystem.config.js` para que se lance la aplicación.
-Aquí podemos ver el estado de la aplicación y ver como efectivamente se está ejecutando en modo cluster.
+Aquí podemos ver el estado de la aplicación y ver como efectivamente se está ejecutando en modo clúster.
 
 Vamos a ver los resultados de los comandos propuestos en el pdf.
 1. pm2 ls
@@ -103,3 +103,7 @@ Vamos a ver los resultados de los comandos propuestos en el pdf.
 
 3. pm2 monit
 ![Vagrantfile](img/pm2-monit.png);
+
+## 5. Cuestiones
+
+Hay que pensar que le clúster esta diseñado para mejorar la disponibilidad de la aplicación y el rendimiento bajo estrés de esta. Pero el coste de manterner la infraestrucutra del clúster supera los beneficios de hacer las respuestas paralelas, en resumen, para tareas pequeñas es mejor no tener un clúster y por esto son mejores las que estan sin clusterizar, pero ojo solo para peticiones pequeñas. Cuando tenemos ya una gran cantidad de peticiones tener un clúster es inmensamente útil a pesar del coste de mantener la infraestructura.

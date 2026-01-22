@@ -12,6 +12,4 @@ npm install express
 
 cp /vagrant/app.js /home/vagrant/practica-cluster/app.js
 
-# sudo pkill -9 node
-
-# node app.js
+node app.js

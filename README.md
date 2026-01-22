@@ -37,3 +37,21 @@ Después de unos cuantos errores, he visto que tengo que cambiar una línea para
 ![Vagrantfile](img/app-js-cambio.png);
 
 Y además añadir `config.vm.network "forwarded_port", guest: 3000, host: 3000` al archivo `Vagrantfile` para que nos permita acceder a la aplicación desde el host.
+
+Cuando vuelve a funcionar la aplicación, vamos a ver los resultados de las pruebas que hemos mencionado antes.
+
+Prueba 1 con valor de n = 50:
+![Vagrantfile](img/prueba-1-2.png);
+
+Prueba 2 con valor de n = 5000000000:
+![Vagrantfile](img/prueba-2-2.png);
+
+Como podemos ver los tiempos han bajado, y la respuesta es más rápida.
+Pero para esto he tenido que especificarle a la máquina que use 4 nucleos: 
+![Vagrantfile](img/cpus.png);
+
+Por tanto, como es algo obvio, el rendimiento aumentará con más nucleos.
+
+## 3. Métricas de rendimiento
+
+Vamos a instalar un programa llamado `loadtest` para realizar las pruebas de rendimiento, ya que este nos permite realizar simular una gran cantidad de conexiones.
